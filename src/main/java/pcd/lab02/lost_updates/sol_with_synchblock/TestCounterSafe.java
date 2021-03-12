@@ -3,7 +3,7 @@ package pcd.lab02.lost_updates.sol_with_synchblock;
 public class TestCounterSafe {
 
 	public static void main(String[] args) throws Exception {
-		int ntimes = 1000000; // Integer.parseInt(args[0]);
+		int ntimes = Integer.parseInt(args[0]);
 		
 		SafeCounter c = new SafeCounter(0);
 		

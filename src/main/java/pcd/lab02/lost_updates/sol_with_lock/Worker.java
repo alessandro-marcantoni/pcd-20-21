@@ -17,8 +17,11 @@ public class Worker extends Thread{
 	public void run(){
 		for (int i = 0; i < ntimes; i++){
 			lock.lock();
-			counter.inc();
-			lock.unlock();
+			try {
+				counter.inc();
+			} finally {
+				lock.unlock();
+			}
 		}
 	}
 }
