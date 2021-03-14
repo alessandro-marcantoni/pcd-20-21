@@ -1,7 +1,7 @@
 package pcd.lab02.lost_updates;
 
 
-public class Worker extends Thread{
+public class Worker extends Thread {
 	
 	private UnsafeCounter counter;
 	private int ntimes;

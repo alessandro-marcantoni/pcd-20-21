@@ -5,7 +5,7 @@ import java.util.concurrent.locks.*;
 public class TestCounter {
 
 	public static void main(String[] args) throws Exception {
-		int ntimes = 10000000; // Integer.parseInt(args[0]);
+		int ntimes = Integer.parseInt(args[0]);
 		UnsafeCounter c = new UnsafeCounter(0);
 		Lock lock = new ReentrantLock();
 		Worker w1 = new Worker(c,ntimes, lock);
