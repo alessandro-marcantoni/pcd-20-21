@@ -1,0 +1,8 @@
+package pcd.lab03.monitors.latch;
+
+public interface Latch {
+
+	void countDown();
+
+	void await() throws InterruptedException;
+}
