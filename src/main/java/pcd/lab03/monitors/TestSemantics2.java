@@ -6,11 +6,12 @@ public class TestSemantics2 {
 
 		public synchronized void m1() {
 			try {
-				System.out.println("First thread inside, going to wait");
+				System.out.println("First thread inside, going to wait in 1 sec");
 				try {
 					Thread.sleep(1000);
 				} catch (Exception ex) {
 				}
+				System.out.println("First thread inside, going to wait");
 				wait();
 				System.out.println("First thread unblocked.");
 				try {
