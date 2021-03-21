@@ -5,7 +5,7 @@ import java.util.*;
 public class TestAccounts_deadlock {
 
 	private static final int NUM_THREADS = 20;
-	private static final int NUM_ACCOUNTS = 5;
+	private static final int NUM_ACCOUNTS = 3;
 	private static final int NUM_ITERATIONS = 10000000;
 	private static final Random gen = new Random();
 	private static final Account[] accounts = new Account[NUM_ACCOUNTS];
@@ -17,6 +17,9 @@ public class TestAccounts_deadlock {
 					throw new InsufficientBalanceException();
 				from.debit(amount);
 				to.credit(amount);
+				try {
+					Thread.sleep(100);
+				} catch (Exception ex) {}
 			}
 		}
 	}

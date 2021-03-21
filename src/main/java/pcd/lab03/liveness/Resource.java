@@ -18,6 +18,12 @@ public class Resource {
 				doSomethingElse();
 			}
 		}
+		/*
+		synchronized(left){
+			synchronized(right){
+				doSomethingElse();
+			}
+		}*/
 	}
 
 	private void doSomething(){
