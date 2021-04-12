@@ -1,0 +1,5 @@
+target = pcd.ass1.sol.part1.jpf.Main
+
+listener=gov.nasa.jpf.listener.PreciseRaceDetector
+
+report.console.property_violation=error,trace
