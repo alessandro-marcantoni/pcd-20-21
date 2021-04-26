@@ -10,7 +10,7 @@ public class Test06b_backpressure_strategy_buffer {
 
 		System.out.println("\n=== TEST backpressure | strategy BUFFER ===\n");
 
-		/* generator with period 5 ms - strat strategy BUFFER | specifying size with onBackpressureBuffer*/
+		/* generator with period 5 ms - strategy BUFFER | specifying size with onBackpressureBuffer*/
 		
 		Flowable<Long> source = genHotStream(5);
 
