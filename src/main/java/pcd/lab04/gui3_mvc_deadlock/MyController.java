@@ -7,6 +7,7 @@ public class MyController {
 	public MyController(MyModel model){
 		this.model = model;
 	}
+	
 	public void processEvent(String event) {
 		try {
 			new Thread(() -> {

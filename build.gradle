@@ -18,17 +18,17 @@ repositories {
 }
 
 dependencies {
-    compile 'io.vertx:vertx-core:4.0.3'
-    compile 'io.vertx:vertx-web:4.0.3'
-    compile 'io.vertx:vertx-web-client:4.0.3'
 
-    api 'org.apache.pdfbox:pdfbox:2.0.22' 
+    /* module 2.2 - async programming with event-loops - vert.x */
+    implementation 'io.vertx:vertx-core:4.0.3'
+    implementation 'io.vertx:vertx-web:4.0.3'
+    implementation 'io.vertx:vertx-web-client:4.0.3'
 
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
+	/* module 2.3 - reactive programming - RxJava */
+	implementation "io.reactivex.rxjava3:rxjava:3.0.12"
 
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:28.2-jre'
+	/* assignment #01 */
+    implementation 'org.apache.pdfbox:pdfbox:2.0.22' 
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'

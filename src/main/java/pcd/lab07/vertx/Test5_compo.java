@@ -16,6 +16,7 @@ class TestCompo extends AbstractVerticle {
 		Future<Buffer> f2 = p2.future();
 		
 		fs.readFile("build.gradle", p1);
+		
 		fs.readFile("settings.gradle", p2);
 				
 		CompositeFuture

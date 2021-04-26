@@ -12,8 +12,9 @@ class TestExecBlocking extends AbstractVerticle {
 
 		Future<Integer> res = this.getVertx().executeBlocking(promise -> {
 			// Call some blocking API that takes a significant amount of time to return
+			log("blocking computation started");
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 				
 				/* notify promise completion */
 				promise.complete(100);

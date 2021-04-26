@@ -14,7 +14,7 @@ public class Controller {
 	
 	public void notifyStarted() {
 		agent = new CounterAgent(counter, stopFlag, DELTA_TIME);
-		agent.start();					
+		agent.start();				
 	}
 	
 	public void notifyStopped() {

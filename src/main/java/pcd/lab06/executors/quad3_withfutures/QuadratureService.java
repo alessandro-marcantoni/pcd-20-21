@@ -39,7 +39,6 @@ public class QuadratureService extends Thread {
 	    	}
 	    }
 	    System.out.printf("The result is %s\n", sum);
-	    executor.shutdown();
 		return sum;
 	}
 	
