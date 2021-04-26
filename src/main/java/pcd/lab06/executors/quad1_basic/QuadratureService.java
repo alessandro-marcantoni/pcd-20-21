@@ -2,7 +2,7 @@ package pcd.lab06.executors.quad1_basic;
 
 import java.util.concurrent.*;
 
-public class QuadratureService extends Thread {
+public class QuadratureService {
 
 	private int numTasks;
 	private int poolSize;

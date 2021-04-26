@@ -14,6 +14,8 @@ public class Test1_basic {
 
 		FileSystem fs = vertx.fileSystem();    		
 
+		log("started");
+		
 		/* version 4.0 - future (promise) based API */
 		
 		Future<Buffer> fut = fs.readFile("build.gradle");
@@ -25,7 +27,9 @@ public class Test1_basic {
 		
 		fs.readFile("settings.gradle", (AsyncResult<Buffer> res) -> {
 			log("SETTINGS \n" + res.result().toString().substring(0,160));
-		});	
+		});
+		
+		log("done");
 	}
 	
 	private static void log(String msg) {

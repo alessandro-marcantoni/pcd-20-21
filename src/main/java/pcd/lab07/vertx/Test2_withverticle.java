@@ -9,6 +9,8 @@ import io.vertx.core.file.FileSystem;
 class MyReactiveAgent extends AbstractVerticle {
 	
 	public void start() {
+		log("started");
+		
 		FileSystem fs = getVertx().fileSystem();    		
 		
 		Future<Buffer> f1 = fs.readFile("build.gradle");
@@ -22,6 +24,12 @@ class MyReactiveAgent extends AbstractVerticle {
 		.onComplete((AsyncResult<Buffer> res) -> {
 			log("SETTINGS \n" + res.result().toString().substring(0,160));
 		});
+		
+		try {
+			Thread.sleep(3000);
+		} catch (Exception ex) {};
+		
+		log("done");
 	}
 
 	private void log(String msg) {

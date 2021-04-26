@@ -15,6 +15,7 @@ public class MyTask implements Runnable {
 	public void run() {
 		log("started.");
 		jobA();
+		
 		try {
 			barrier.await();
 		} catch (Exception ex) {
