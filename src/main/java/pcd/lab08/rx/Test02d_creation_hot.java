@@ -2,6 +2,7 @@ package pcd.lab08.rx;
 
 import io.reactivex.rxjava3.core.*;
 import io.reactivex.rxjava3.flowables.ConnectableFlowable;
+import io.reactivex.rxjava3.observables.ConnectableObservable;
 
 public class Test02d_creation_hot {
 
@@ -9,7 +10,7 @@ public class Test02d_creation_hot {
 
 		System.out.println("\n=== TEST Hot streams  ===\n");
 		
-		Flowable<Integer> source = Flowable.create(emitter -> {		     
+		Observable<Integer> source = Observable.create(emitter -> {		     
 			new Thread(() -> {
 				int i = 0;
 				while (i < 200){
@@ -22,9 +23,9 @@ public class Test02d_creation_hot {
 				}
 			}).start();
 		     //emitter.setCancellable(c::close);
-		 }, BackpressureStrategy.BUFFER);
+		 });
 		
-		ConnectableFlowable<Integer> hotObservable = source.publish();
+		ConnectableObservable<Integer> hotObservable = source.publish();
 		hotObservable.connect();
 	
 		/* give time for producing some data before any subscription */
@@ -33,7 +34,8 @@ public class Test02d_creation_hot {
 		log("Subscribing A.");
 		
 		hotObservable.subscribe((s) -> {
-			log("subscriber A: "+s); 
+			log("subscriber A: "+s);
+			// Thread.sleep(5000);
 		});	
 		
 		/* give time for producing some data before second subscriber */
