@@ -11,7 +11,7 @@ public class Test02b_creation_async {
 		Observable<Integer> source = Observable.create(emitter -> {		     
 			new Thread(() -> {
 				int i = 0;
-				while (i < 10){
+				while (i < 20){
 					try {
 						log("source: "+i); 
 						emitter.onNext(i);

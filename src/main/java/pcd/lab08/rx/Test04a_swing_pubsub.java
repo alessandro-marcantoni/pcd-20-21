@@ -2,12 +2,13 @@ package pcd.lab08.rx;
 
 import javax.swing.*;
 
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 
-public class Test04_swing_pubsub {	
+public class Test04a_swing_pubsub {	
 
 	static class MyFrame extends JFrame {	
 
@@ -40,16 +41,17 @@ public class Test04_swing_pubsub {
 		});
 
 		clickStream
-		.subscribe((v) -> {
-			System.out.println("click: "+System.currentTimeMillis());
-		});
+			.observeOn(Schedulers.computation())
+			.subscribe((v) -> {
+				System.out.println(Thread.currentThread().getName() + "click: "+System.currentTimeMillis());
+			});
 
 		clickStream
 			.buffer(clickStream.throttleWithTimeout(250, TimeUnit.MILLISECONDS))
 			.map(xs -> xs.size())
 			.filter((v) -> v >= 2)
 			.subscribe((v) -> {
-				System.out.println("Multi-click: "+v);
+				System.out.println(Thread.currentThread().getName() + ": Multi-click: "+v);
 			});
 		
 	}
