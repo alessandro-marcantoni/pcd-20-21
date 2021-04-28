@@ -31,6 +31,8 @@ public class ViewFrame extends JFrame implements ActionListener {
 	
 	private File dir;
 	private File wordsToDiscardFile;
+	private String selectedDirFullPath;
+	private String selectedFileFullPath;
 	
 	private ArrayList<InputListener> listeners;
 
@@ -44,9 +46,11 @@ public class ViewFrame extends JFrame implements ActionListener {
 		chooseDir = new JButton("select dir");
 		chooseFile = new JButton("select file");
 		
-		selectedDir = new JLabel("test/ass01/data-ita");
+		selectedDirFullPath = "test/ass01/data-ita";
+		selectedDir = new JLabel("data-ita");
 		selectedDir.setSize(200,14);
-		selectedFile = new JLabel("test/ass01/data-ita/config.txt");
+		selectedFileFullPath = "test/ass01/data-ita/config.txt";
+		selectedFile = new JLabel("config.txt");
 		selectedFile.setSize(200,14);
 		
 		// startDirectory = new JFileChooser();
@@ -112,21 +116,24 @@ public class ViewFrame extends JFrame implements ActionListener {
 		Object src = ev.getSource();
 		if (src == chooseDir) {
 			startDirectoryChooser = new JFileChooser();
+			startDirectoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		    int returnVal = startDirectoryChooser.showOpenDialog(this);
 		    if(returnVal == JFileChooser.APPROVE_OPTION) {
 		        dir = startDirectoryChooser.getSelectedFile();
-		        selectedDir.setText(dir.getAbsolutePath());
+		    	selectedDirFullPath = dir.getAbsolutePath();
+		        selectedDir.setText(dir.getName());
 		     }
 		} else if (src == chooseFile) {
 			wordsToDiscardFileChooser = new JFileChooser();
 		    int returnVal = wordsToDiscardFileChooser.showOpenDialog(this);
 		    if(returnVal == JFileChooser.APPROVE_OPTION) {
 		    	wordsToDiscardFile = wordsToDiscardFileChooser.getSelectedFile();
-		        selectedFile.setText(wordsToDiscardFile.getAbsolutePath());
+		    	selectedFileFullPath = wordsToDiscardFile.getAbsolutePath();
+		    	selectedFile.setText(wordsToDiscardFile.getName());
 		     }		    
 		} else if (src == startButton) {
-			File dir = new File(selectedDir.getText());
-			File configFile = new File(selectedFile.getText());
+			File dir = new File(selectedDirFullPath);
+			File configFile = new File(selectedFileFullPath);
 			int numMostFreqWords = Integer.parseInt(nMostFreqWords.getText());			
 			this.notifyStarted(dir, configFile, numMostFreqWords);
 			this.state.setText("Processing...");
