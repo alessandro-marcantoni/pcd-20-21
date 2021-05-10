@@ -2,6 +2,7 @@ package pcd.lab08.rx;
 
 import java.util.concurrent.TimeUnit;
 import io.reactivex.rxjava3.core.*;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class Test05_time_flow {
 
@@ -12,13 +13,13 @@ public class Test05_time_flow {
 		log("Generating.");
 		
 		Observable
-        		.interval(100, TimeUnit.MILLISECONDS)	// Long
+				.interval(100, TimeUnit.MILLISECONDS)	// Long
         					.doOnNext(v -> logDeb("1> " + v))
         		.timestamp() 							// Timed
         					.doOnNext(v -> logDeb("2> " + v))
         		.sample(500, TimeUnit.MILLISECONDS)
         					.doOnNext(v -> logDeb("3> " + v))
-				.map(ts -> " " + (ts.time(TimeUnit.MILLISECONDS) - startTime) + "ms: " + ts.value())
+				.map(ts -> " " + (ts.time(TimeUnit.MILLISECONDS) - startTime) + " ms - value: " + ts.value())
         					.doOnNext(v -> logDeb("4> " + v))
 				.take(5)
         					.doOnNext(v -> logDeb("5> " + v))
@@ -35,7 +36,7 @@ public class Test05_time_flow {
 	}
 
 	static private void logDeb(String msg) {
-		// System.out.println("[ " + Thread.currentThread().getName() + " ] " + msg);
+		System.out.println("[ " + Thread.currentThread().getName() + " ] " + msg);
 	}
 	
 }

@@ -18,12 +18,14 @@ public class Test04b_pubsub_warning {
 	public static void main(String[] args){
 				
 		Subject<String> subject = PublishSubject.create();
+		
 		subject.onNext("Alpha");
 		subject.onNext("Beta");
 		subject.onNext("Alpha");
 		subject.onComplete();
 		
-		subject.map(String::length)
+		subject
+		    .map(String::length)
 			.subscribe(System.out::println);  // no output, too late 
 
 	
