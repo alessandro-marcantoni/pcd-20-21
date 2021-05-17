@@ -17,6 +17,10 @@ repositories {
     jcenter()
 }
 
+def versions = [
+  ScalaBinary: "2.13"
+]
+
 dependencies {
 
     /* module 2.2 - async programming with event-loops - vert.x */
@@ -29,6 +33,13 @@ dependencies {
 
 	/* assignment #01 */
     implementation 'org.apache.pdfbox:pdfbox:2.0.22' 
+
+	/* module 3.1 - akka actors */
+    implementation platform("com.typesafe.akka:akka-bom_${versions.ScalaBinary}:2.6.14")
+    implementation "com.typesafe.akka:akka-actor-typed_${versions.ScalaBinary}"
+
+	/* module 4.1 - akka actors */
+    implementation "com.typesafe.akka:akka-remote_${versions.ScalaBinary}"
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
